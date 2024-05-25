@@ -13,9 +13,21 @@ start_date = datetime(2024, 5, 24, tzinfo=ZoneInfo("Europe/Berlin"))
 jobs_start_row = 2
 experiances_start_row = 16
 slot_cols = [
-    (1, 6, timedelta(hours=12), timedelta(hours=16)),
-    (7, 12, timedelta(hours=16), timedelta(hours=20)),
-    (13, 18, timedelta(hours=20), timedelta(hours=24)),
+    [
+        (1, 6, timedelta(hours=12), timedelta(hours=16)),
+        (7, 12, timedelta(hours=16), timedelta(hours=20)),
+        (13, 18, timedelta(hours=20), timedelta(hours=24)),
+    ],
+    [
+        (1, 6, timedelta(hours=9), timedelta(hours=14)),
+        (7, 12, timedelta(hours=14), timedelta(hours=20)),
+        (13, 18, timedelta(hours=20), timedelta(hours=24)),
+    ],
+    [
+        (1, 6, timedelta(hours=9), timedelta(hours=14)),
+        (7, 12, timedelta(hours=14), timedelta(hours=20)),
+        (13, 18, timedelta(hours=20), timedelta(hours=24)),
+    ],
 ]
 
 
@@ -29,7 +41,7 @@ def get_jobs(day_num, row):
     if job == "":
         return jobs
 
-    for slot in slot_cols:
+    for slot in slot_cols[day_num]:
         for col in range(slot[0], slot[1]):
             try:
                 name = row[col]
